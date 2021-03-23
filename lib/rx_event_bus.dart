@@ -6,8 +6,8 @@ import 'package:rxdart/subjects.dart';
 ///
 /// 基于 [rxdart] 的事件总线
 class EventBus {
-  PublishSubject _publishSubject;
-  ReplaySubject _replaySubject;
+  late PublishSubject _publishSubject;
+  late ReplaySubject _replaySubject;
 
   PublishSubject get publishSubject => _publishSubject;
   ReplaySubject get replaySubject => _replaySubject;
@@ -24,7 +24,7 @@ class EventBus {
   /// 监听广播的回调事件
   Stream<T> on<T>() {
     if (T == dynamic) {
-      return _publishSubject.stream;
+      return _publishSubject.stream as Stream<T>;
     } else {
       return _publishSubject.stream.where((event) => event is T).cast<T>();
     }
@@ -34,7 +34,7 @@ class EventBus {
   ///
   Stream<T> onSticky<T>() {
     if (T == dynamic) {
-      return _replaySubject.stream;
+      return _replaySubject.stream as Stream<T>;
     } else {
       return _replaySubject.stream.where((event) => event is T).cast<T>();
     }
