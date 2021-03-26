@@ -75,3 +75,7 @@ EventBus eventBus = EventBus(maxSize: 10);
 ```
 
 - maxSize: 粘性广播最大的留存条数
+
+## Changelog
+
+Refer to the [Changelog](CHANGELOG.md) to get all release notes.
